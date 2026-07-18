@@ -47,6 +47,7 @@ box-shadow: 0 2px 2px rgba(0,0,0,0.1);
     text-decoration:none;
     color:black;
     text-align:center;
+    overflow:hidden;
 }
 .nav-links a:hover{
     color: #7c3aed;;
@@ -83,4 +84,17 @@ box-shadow: 0 2px 2px rgba(0,0,0,0.1);
 }
 .btn:hover{
 transition: 0.3s ease;
+}
+.Hamburger{
+    display:block;
+    cursor:pointer;
+}
+
+@media screen and (min-width: 768px) {
+.nav-links a {
+    display:flex ;
+}
+.hamburger{
+    display: none;
+}
 }
