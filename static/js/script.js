@@ -1,8 +1,7 @@
 let Hamburger = document.getElementById("Hamburger-icon");
-let navlinks = document.querySelector(".nav-links");
+let navlinks = document.getElementById("navlinks");
+Hamburger.addEventListener("click",() =>
+{
+	navlinks.classList.toggle("active");
 
-if (Hamburger) {
-	Hamburger.addEventListener("click", () => {
-		if (navlinks) navlinks.classList.toggle("open");
-	});
-}
+} );
