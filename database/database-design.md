@@ -1,19 +1,18 @@
 # LifeOS Database Structure
 
-## Users Table
+## Users_Table
 Stores information about each LifeOS user
-
 
 
 | Column | Data Type | Rules | Description |
 |--------|------------|-------|------------|
 |id|Integer| Primary key, auto number|ID for the user|
-|name| Text|Required  | user's name|
+|user_name| Text|Required  | user's name|
 |email|Text|Required , UNIQUE | user's email address|
 |password_hash| Text| Required | user's account password|
 |created_at| DATETIME| Automatic| Date the account  was created|
 
-## 2. Goals Table 
+## 2. Goals_Table 
 Stores the goals created by the user.
 
 
@@ -22,16 +21,16 @@ Stores the goals created by the user.
 |id| INTEGER |Primary key, auto number|  user_id for the goal|
 |user_id|   INTEGER| Required, links to users.id| Identifies which user owns the goal|
 |title|Text|Required | Name of the goal|
-|description|Text| Optional| Details about the goal|
-|start_date| DATE| Optional| Date the goal start|
-|due_date| DATE| Optional | Date the goal ends|
+|description_goals|Text| Optional| Details about the goal|
+|date_start| DATE| Optional| Date the goal start|
+|date_end| DATE| Optional | Date the goal ends|
 |progress| INTEGER| Default 0 , between 0 and 100 | Goal progress percentage|
 |status| Text| Default "not started"| Current goals status   Not Started,  In progress and Completed |
 |created_at| DATETIME| Automatic| Date the goal created|
 
 ----
 
-## 3. Tasks Table 
+## 3. Tasks_Table 
 Store Individual task that the user needs to complete
 | Column | Data Type| Rules  | Description |
 |--------|------------|------|-------------|
@@ -39,7 +38,7 @@ Store Individual task that the user needs to complete
 |goal_id| INTEGER| Primary key, auto number| Goal this task supports|
 |user_id| INTEGER| Required, links to users.id| Which user owns this task|
 |title| TEXT | Optional, links to goals.id| Name of the task|
-|description| Text| Required| Details about the task|
+|description_task| Text| Required| Details about the task|
 |due_date| DATETIME| Optional| Date task should be completed|
 |start_time| TIME|  OPTIONAL|  TIME the task is scheduled to start |
 |is_completed| Boolean|Default false| Whether the task is completed|
@@ -47,7 +46,7 @@ Store Individual task that the user needs to complete
 |created_at|DATETIME| Automatic| Date the task created|
 
 
-## 4. Daily Review
+## 4. Daily_Review
 Stores user's daily reflections.
 
 
@@ -69,10 +68,10 @@ Stores projects the user is working on.
 | id | INTEGER| Primary key, auto number | Unique ID for the project |
 | user_id | INTEGER| Required, linksto users.id | Identifies which user owns the project |
 | title | TEXT|Required | Project name |
-| description | TEXT| Optional | Project details |
+| description_project | TEXT| Optional | Project details |
 | start_date | DATE| Optional | Project start date |
 | due_date | DATE | Optional| Project deadline |
-| status | TEXT | Default not started| Current project status "Not Started" , "In progress" and "Completed" |
+| project_status | TEXT | Default not started| Current project status "Not Started" , "In progress" and "Completed" |
 | created_at | DATETIME| Automatic | Date the project was created |
 
 ---
