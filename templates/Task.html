@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Goals Section</title>
+    <title>Task Section</title>
 
     <!-- Font Awesome -->
     <link rel="stylesheet"
@@ -113,37 +113,12 @@
 
 
         <div class="task-list">
-
-            <div class="task-item">
-                <input type="checkbox" id="task1">
-                <label for="task1">Complete the report</label>
-            </div>
-
-            <div class="task-item">
-                <input type="checkbox" id="task2">
-                <label for="task2">Complete Python lesson</label>
-            </div>
-
-            <div class="task-item">
-                <input type="checkbox" id="task3">
-                <label for="task3">Study Mathematics</label>
-            </div>
-
-            <div class="task-item">
-                <input type="checkbox" id="task4">
-                <label for="task4">Work on LifeOS</label>
-            </div>
-
-            <div class="task-item">
-                <input type="checkbox" id="task5">
-                <label for="task5">Practice Mandarin</label>
-            </div>
-
-            <div class="task-item">
-                <input type="checkbox" id="task6">
-                <label for="task6">Review today's notes</label>
-            </div>
-
+                {% for task in tasks %}
+                <div class="task-item"> 
+                <input type="checkbox" id="task{{loop.index}}">
+                <label for="task{{loop.index}}">{{task["title"]}}</label>
+             </div>
+               {%endfor%}
         </div>
 
 

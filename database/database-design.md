@@ -25,7 +25,7 @@ Stores the goals created by the user.
 |date_start| DATE| Optional| Date the goal start|
 |date_end| DATE| Optional | Date the goal ends|
 |progress| INTEGER| Default 0 , between 0 and 100 | Goal progress percentage|
-|status| Text| Default "not started"| Current goals status   Not Started,  In progress and Completed |
+|status_line| Text| Default "not started"| Current goals status   Not Started,  In progress and Completed |
 |created_at| DATETIME| Automatic| Date the goal created|
 
 ----
@@ -69,7 +69,7 @@ Stores projects the user is working on.
 | user_id | INTEGER| Required, linksto users.id | Identifies which user owns the project |
 | title | TEXT|Required | Project name |
 | description_project | TEXT| Optional | Project details |
-| start_date | DATE| Optional | Project start date |
+| date_start | DATE| Optional | Project start date |
 | due_date | DATE | Optional| Project deadline |
 | project_status | TEXT | Default not started| Current project status "Not Started" , "In progress" and "Completed" |
 | created_at | DATETIME| Automatic | Date the project was created |
