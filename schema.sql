@@ -1,8 +1,8 @@
 Create Table IF NOT EXISTS user_table(
 
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    user_name VARCHAR(50) NOT NULL UNIQUE,
-    email VARCHAR(100) NOT NULL UNIQUE,
+    user_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
     Created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -38,7 +38,7 @@ Create  Table IF NOT EXISTS Daily_Review(
     user_id INTEGER NOT NULL  REFERENCES user_table(id),
     review_date DATE NOT NULL,
     content TEXT NOT NULL,
-    created_at DATETIME DEFAULT CURRRENT_TIMESTAMP
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 Create Table IF NOT EXISTS Project_Table(
@@ -51,4 +51,9 @@ Create Table IF NOT EXISTS Project_Table(
     project_status TEXT DEFAULT 'NOT STARTED',
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 
-)
+);
+
+
+
+
+

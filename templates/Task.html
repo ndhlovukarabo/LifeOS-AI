@@ -111,16 +111,23 @@
             </button>
         </div>
 
+    <div class="task_list">
+    {% for task in tasks %}
+        <div class="task-item">
+            <input
+                type="checkbox"
+                id="task{{ task['id'] }}"
+                data-task-id="{{ task['id'] }}"
+                {% if task['is_completed'] %}checked{% endif %}
+            >
 
-        <div class="task-list">
-                {% for task in tasks %}
-                <div class="task-item"> 
-                <input type="checkbox" id="task{{loop.index}}">
-                <label for="task{{loop.index}}">{{task["title"]}}</label>
-             </div>
-               {%endfor%}
+            <label for="task{{ task['id'] }}">
+                {{ task["title"] }}
+            </label>
         </div>
-
+    {% endfor %}
+</div>
+       
 
         <div class="daily-review">
 
@@ -137,5 +144,10 @@
 
 </section> 
 
+
+<!---JAVASCRIPT-->
+ <script  src="/static/js/script.js"></script>
+
         </body>
+
 </html>

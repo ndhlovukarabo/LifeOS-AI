@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import sqlite3
+from flask import request
 
 app = Flask(__name__)
 def get_db():
@@ -7,9 +8,13 @@ def get_db():
     conn.row_factory = sqlite3.Row
     return conn
 def init_db():
-            with open("schema.sql") as f:
-                conn = get_db()
-                conn.executescript(f.read())
+        conn = get_db()
+        with open("schema.sql","r", encoding="utf-8") as f:
+          conn.executescript(f.read())
+
+        with open("sample_data.sql","r", encoding="utf-8") as f:
+                conn.executescript(f.read()) 
+
                 conn.commit()
                 conn.close()
             
@@ -36,11 +41,30 @@ def tasks():
           print("Task records:", tasks)
           conn.close()
           return render_template("Task.html", tasks=tasks)
+@app.route("/updata_task", methods=["POST"])
+def update_task():
+     data = request.get_json()
+     task_id = data["task_id"]
+     is_completed = data["is_completed"]
+
+     conn = get_db()
+     conn.execute(
+           "UPDATE Task_Table SET is_completed = ? WHERE id = ?",
+        (is_completed, task_id)
+     )
+     conn.commit()
+     conn.close()
+     return {"Success": True}
+
+     
+
+
 
    
 
 if __name__ == "__main__":
     init_db()
+    
     app.run(debug=True)
 
     
