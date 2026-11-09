@@ -106,9 +106,28 @@
         <div class="task-heading">
             <h2>My Tasks</h2>
 
-            <button class="add-task">
+            <button id="toggleformBtn" type="button" class="add-task">
                 + Add Task
             </button>
+
+        <div id="Form Container" style="display: none; margin-top: 10px">
+        <form id="taskform" method="POST" action="/add_task">
+            <label for = "name">Title:</label>
+            <input type ="text" id="name" name ="Title" placeholder="Enter your Title required"><br><br>
+
+            <label for = "description_task">Description:</label>
+            <input type ="text" id="description_task" name ="description" placeholder="Enter your description optional"><br><br>
+
+            <label for = "description">Due date:</label>
+            <input type ="text" id="due_date" name ="due_date" placeholder="Enter your due_date optional"><br><br>
+
+            <label for = "description">Start date:</label>
+            <input type ="text" id="start_date" name ="start_date" placeholder="Enter your start_date optional"><br><br>
+        </form>  
+
+
+        </div>
+
         </div>
 
     <div class="task_list">

@@ -1,5 +1,8 @@
 
 // Hamburger code
+let Hamburger = document.getElementById("Hamburger-icon");
+let navlinks = document.getElementById("navlinks");
+
 if (Hamburger && navlinks) {
     Hamburger.addEventListener("click", () => {
         navlinks.classList.toggle("active");

@@ -41,7 +41,7 @@ def tasks():
           print("Task records:", tasks)
           conn.close()
           return render_template("Task.html", tasks=tasks)
-@app.route("/updata_task", methods=["POST"])
+@app.route("/update_task", methods=["POST"])
 def update_task():
      data = request.get_json()
      task_id = data["task_id"]
@@ -52,6 +52,18 @@ def update_task():
            "UPDATE Task_Table SET is_completed = ? WHERE id = ?",
         (is_completed, task_id)
      )
+@app.route("/add_task", methods="POST")
+def add_task():
+     data = request.get_json()
+     task_name = data["task_name"]
+     description_task = data["description_task"]
+     due_date = data["due_date"]
+     start_date = data["start_date"]
+
+     conn = get_db()
+     conn.execute(
+          ("INSERT INTO Task_Table (task_name, description_task, due_date, start_date) VALUES (?,?,?,?)", (task_name, description_task, due_date, start_date))
+     ) 
      conn.commit()
      conn.close()
      return {"Success": True}
