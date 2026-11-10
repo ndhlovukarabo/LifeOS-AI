@@ -110,30 +110,48 @@
                 + Add Task
             </button>
 
-        <div id="Form Container" style="display: none; margin-top: 10px">
+        <div id="Form_container" style="display: none; margin-top: 10px">
         <form id="taskform" method="POST" action="/add_task">
-            <label for = "name">Title:</label>
-            <input type ="text" id="name" name ="Title" placeholder="Enter your Title required"><br><br>
+            <label for = "title">Title:</label>
+            <input type ="text" id="title" name ="title" placeholder="Enter your Title required"><br><br>
 
+           
+           
             <label for = "description_task">Description:</label>
-            <input type ="text" id="description_task" name ="description" placeholder="Enter your description optional"><br><br>
+            <textarea type ="text"
+             id="description_task"
+             name ="description_task" 
+             placeholder="Enter description optional"><br><br>
+            </textarea>
 
-            <label for = "description">Due date:</label>
-            <input type ="text" id="due_date" name ="due_date" placeholder="Enter your due_date optional"><br><br>
 
-            <label for = "description">Start date:</label>
-            <input type ="text" id="start_date" name ="start_date" placeholder="Enter your start_date optional"><br><br>
+            <label for = "due_date">Due date:</label>
+            <input type ="date"
+             id="due_date"
+              name ="due_date"
+             placeholder="Enter due_date optional"><br><br>
+            
+
+
+            <label for = "start_date">Start date:</label>
+            <input type ="time" id="start_date" name ="start_date" placeholder="Enter start_date optional"><br><br>
+
+            <button type="submit">Save Task</button>
         </form>  
-
-
         </div>
 
         </div>
+
+        
 
     <div class="task_list">
     {% for task in tasks %}
         <div class="task-item">
-            <input
+        
+            <h3>{{task['title']}}</h3>
+            <p>{{task['description_task']}}</p>
+            <p>Due: {{task['due_date'] or 'NO Deadline'}}</p>
+        <input
                 type="checkbox"
                 id="task{{ task['id'] }}"
                 data-task-id="{{ task['id'] }}"

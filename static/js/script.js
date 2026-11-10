@@ -9,6 +9,18 @@ if (Hamburger && navlinks) {
     });
 }
 
+let ToggleFormBtn =document.getElementById("toggleformBtn");
+let FormContainer = document.getElementById("Form_container");
+
+if (ToggleFormBtn && FormContainer) {
+	ToggleFormBtn.addEventListener("click",() => {
+		FormContainer.classList.toggle("active");
+	});
+}
+
+
+
+
 
 // Select all task checkbox
 let task_checkboxes = document.querySelectorAll(".task-item input[type='checkbox']");

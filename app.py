@@ -1,6 +1,9 @@
 from flask import Flask, render_template
 import sqlite3
 from flask import request
+from flask import url_for, redirect
+
+
 
 app = Flask(__name__)
 def get_db():
@@ -52,21 +55,20 @@ def update_task():
            "UPDATE Task_Table SET is_completed = ? WHERE id = ?",
         (is_completed, task_id)
      )
-@app.route("/add_task", methods="POST")
+@app.route("/add_task", methods=["POST"])
 def add_task():
-     data = request.get_json()
-     task_name = data["task_name"]
-     description_task = data["description_task"]
-     due_date = data["due_date"]
-     start_date = data["start_date"]
+     title = request.form.get("title")
+     description_task = request.form.get("description_task")
+     due_date = request.form.get("due_date")
+     start_date = request.form.get["start_date"]
 
      conn = get_db()
      conn.execute(
-          ("INSERT INTO Task_Table (task_name, description_task, due_date, start_date) VALUES (?,?,?,?)", (task_name, description_task, due_date, start_date))
+          ("INSERT INTO Task_Table (task_name, description_task, due_date, start_date) VALUES (?,?,?,?)", (title, description_task, due_date, start_date))
      ) 
      conn.commit()
      conn.close()
-     return {"Success": True}
+     return redirect(url_for("tasks"))
 
      
 
