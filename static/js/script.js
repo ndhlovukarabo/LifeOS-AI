@@ -23,7 +23,7 @@ if (ToggleFormBtn && FormContainer) {
 
 
 // Select all task checkbox
-let task_checkboxes = document.querySelectorAll(".task-item input[type='checkbox']");
+let task_checkboxes = document.querySelectorAll(".task-info input[type='checkbox']");
 // adding a change  eventlistener to each checkbox
 task_checkboxes.forEach((checkbox) => {
 	//get the id from the checkbox

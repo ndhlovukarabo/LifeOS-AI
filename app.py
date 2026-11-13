@@ -14,13 +14,16 @@ def init_db():
         conn = get_db()
         with open("schema.sql","r", encoding="utf-8") as f:
           conn.executescript(f.read())
-
         with open("sample_data.sql","r", encoding="utf-8") as f:
-                conn.executescript(f.read()) 
+            conn.executescript(f.read()) 
+        
 
-                conn.commit()
-                conn.close()
-            
+        conn.commit()
+        conn.close()
+                      
+
+      
+               
 
 
 @app.route("/")
@@ -42,8 +45,10 @@ def tasks():
           tasks = conn.execute( "SELECT * FROM Task_Table").fetchall()
           print("Tasks retrieved:", len(tasks))
           print("Task records:", tasks)
+        
           conn.close()
           return render_template("Task.html", tasks=tasks)
+       
 @app.route("/update_task", methods=["POST"])
 def update_task():
      data = request.get_json()
@@ -55,21 +60,23 @@ def update_task():
            "UPDATE Task_Table SET is_completed = ? WHERE id = ?",
         (is_completed, task_id)
      )
+     conn.commit()
+     conn.close()
+     return("Success",200)
 @app.route("/add_task", methods=["POST"])
 def add_task():
      title = request.form.get("title")
      description_task = request.form.get("description_task")
      due_date = request.form.get("due_date")
-     start_date = request.form.get["start_date"]
+     start_time = request.form.get("start_time")
 
      conn = get_db()
      conn.execute(
-          ("INSERT INTO Task_Table (task_name, description_task, due_date, start_date) VALUES (?,?,?,?)", (title, description_task, due_date, start_date))
-     ) 
+          "INSERT INTO Task_Table (title, description_task, due_date, start_time) VALUES (?,?,?,?)", (title, description_task, due_date, start_time))
+    
      conn.commit()
      conn.close()
      return redirect(url_for("tasks"))
-
      
 
 

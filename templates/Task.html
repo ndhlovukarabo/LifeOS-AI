@@ -96,7 +96,7 @@
                 <span>3/6 completed tasks</span>
             </div>
 
-            <div class="progress-bar">
+            <div class="progress_bar">
                 <div class="progress-fill"></div>
             </div>
 
@@ -108,12 +108,14 @@
 
             <button id="toggleformBtn" type="button" class="add-task">
                 + Add Task
-            </button>
-
-        <div id="Form_container" style="display: none; margin-top: 10px">
+            </button> 
+        </div>
+        <div id="Form_container" style="margin-top: 10px">
         <form id="taskform" method="POST" action="/add_task">
             <label for = "title">Title:</label>
-            <input type ="text" id="title" name ="title" placeholder="Enter your Title required"><br><br>
+            <input type ="text" id="title"
+             name ="title"
+            placeholder="Enter your Title required"><br><br>
 
            
            
@@ -133,24 +135,25 @@
             
 
 
-            <label for = "start_date">Start date:</label>
-            <input type ="time" id="start_date" name ="start_date" placeholder="Enter start_date optional"><br><br>
-
-            <button type="submit">Save Task</button>
-        </form>  
-        </div>
-
-        </div>
+            <label for = "start_time">Start date:</label>
+            <input type ="time" id="start_time" name ="start_time" placeholder="Enter start_date optional"><br>
+            <button type="submit">Add Task</button>
+        </form> 
+     
 
         
 
-    <div class="task_list">
+    <div class="task-list">
     {% for task in tasks %}
         <div class="task-item">
-        
-            <h3>{{task['title']}}</h3>
+
+            <div class="task-info">
+           <h3>{{task['title']}}</h3>
             <p>{{task['description_task']}}</p>
             <p>Due: {{task['due_date'] or 'NO Deadline'}}</p>
+            </div>
+        <div class="task-status">
+             
         <input
                 type="checkbox"
                 id="task{{ task['id'] }}"
@@ -162,6 +165,8 @@
                 {{ task["title"] }}
             </label>
         </div>
+        </div>
+         
     {% endfor %}
 </div>
        
